@@ -2,7 +2,8 @@
 
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3003/api';
+// const BASE_URL = 'http://localhost:3003/api';
+const BASE_URL = 'http://salesviredapi.prashantdey.in/api';
 
 // Function to add a new lead profile
 export const addLeadProfile = async (data) => {
