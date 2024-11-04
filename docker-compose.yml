@@ -3,13 +3,13 @@ services:
   careerpath:
     build: 
       context: ./backend/careerPath
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - "3003:3003"
   frontend:
     build: 
       context: ./frontend
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - "80:3000"
     depends_on:
