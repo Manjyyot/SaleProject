@@ -1,0 +1,15 @@
+.header-toolbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #5F1014;
+  }
+  
+  .header-title {
+    font-weight: bold;
+    font-family: 'Arial Black', Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+  }
+  
+  .header-links > * {
+    margin-left: 15px;
+  }

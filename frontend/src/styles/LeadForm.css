@@ -1,0 +1,23 @@
+.lead-form-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .lead-form-title {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .lead-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .lead-form-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-self: center;
+  }

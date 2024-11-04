@@ -58,7 +58,7 @@ const getLeadOutcomeById = async (req, res) => {
         if (!outcome) {
             return res.status(404).json({ message: 'Lead outcome not found' });
         }
-        res.status(200).json({ data: outcome });
+        res.status(200).json(outcome);
     } catch (error) {
         console.error('Error fetching lead outcome by ID:', error);
         res.status(500).json({ message: 'Internal server error', error });
@@ -80,7 +80,7 @@ const getLeadOutcomeByEmailOrPhone = async (req, res) => {
         if (!outcome) {
             return res.status(404).json({ message: 'Lead outcome not found' });
         }
-        res.status(200).json({ data: outcome });
+        res.status(200).json(outcome);
     } catch (error) {
         console.error('Error fetching lead outcome by email or phone:', error);
         res.status(500).json({ message: 'Internal server error', error });
@@ -95,7 +95,7 @@ const updateLeadOutcomeById = async (req, res) => {
         if (!updatedOutcome) {
             return res.status(404).json({ message: 'Lead outcome not found' });
         }
-        res.status(200).json({ message: 'Lead outcome updated successfully', data: updatedOutcome });
+        res.status(200).json(updatedOutcome);
     } catch (error) {
         console.error('Error updating lead outcome by ID:', error);
         res.status(500).json({ message: 'Internal server error', error });

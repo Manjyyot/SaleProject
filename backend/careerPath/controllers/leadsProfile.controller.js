@@ -27,7 +27,7 @@ const addLeadProfile = async (req, res) => {
 const getAllLeadProfile = async (req, res) => {
   try {
     const leads = await LeadProfileModel.find();
-    res.status(200).json({ data: leads });
+    res.status(200).json(leads);
   } catch (error) {
     res.status(500).json({ message: "Error fetching lead profiles", error });
   }
@@ -36,11 +36,13 @@ const getAllLeadProfile = async (req, res) => {
 // Get a lead profile by ID
 const getLeadProfileById = async (req, res) => {
   try {
+    console.log('Id requested: ',req.params.id)
     const lead = await LeadProfileModel.findById(req.params.id);
+    console.log('lead: ', lead)
     if (!lead) {
       return res.status(404).json({ message: "Lead profile not found" });
     }
-    res.status(200).json({ data: lead });
+    res.status(200).json(lead);
   } catch (error) {
     res.status(500).json({ message: "Error fetching lead profile", error });
   }
@@ -102,7 +104,7 @@ const getLeadProfileByEmailOrPhone = async (req, res) => {
     if (!lead) {
       return res.status(404).json({ message: "Lead profile not found" });
     }
-    res.status(200).json({ data: lead });
+    res.status(200).json(lead);
   } catch (error) {
     res
       .status(500)

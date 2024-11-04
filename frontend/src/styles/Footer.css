@@ -1,0 +1,15 @@
+.footer {
+    background-color: #f5f5f5;
+    padding: 20px 0; /* Added extra padding */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer Typography {
+    color: #757575;
+}
+
+body {
+    padding-bottom: 60px; /* Added padding to prevent content from being hidden */
+}

@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import DashboardPage from './pages/DashboardPage';
+import AddLeadPage from './pages/AddLeadPage';
+import LeadProfilePage from './pages/LeadProfilePage';
+import ProcessOutcomePage from './pages/ProcessOutcomePage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<DashboardPage />} />
+        <Route path="/add-lead" element={<AddLeadPage />} />
+        <Route path="/lead-profile/:id" element={<LeadProfilePage />} />
+        <Route path="/process-outcome/:id" element={<ProcessOutcomePage />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 
