@@ -2,7 +2,7 @@ version: '3.8'
 services:
   careerpath:
     build: 
-      context: ./backend/careerpath
+      context: ./backend/careerPath
       dockerfile: dockerfile
     ports:
       - "3003:3003"
