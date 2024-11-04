@@ -39,6 +39,7 @@ module.exports = {
     compress: true,
     port: 3000,
     historyApiFallback: true, // Ensure React Router works in dev mode
+    allowedHosts: 'all',
   },
   resolve: {
     extensions: ['.js', '.jsx'], // Resolve JS and JSX extensions
