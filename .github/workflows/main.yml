@@ -31,4 +31,5 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         port: 22
         script: |
+          sudo docker rmi -f $(sudo docker images -f "dangling=true" -q)
           sudo docker-compose up --build -d
