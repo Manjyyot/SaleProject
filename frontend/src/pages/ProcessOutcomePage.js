@@ -15,7 +15,7 @@ function ProcessOutcomePage() {
         const response = await getLeadOutcomeById(id);
         setOutcome(response);
       } catch (error) {
-        alert('Error fetching lead outcome');
+        console.log('Error fetching lead outcome. Retry again.');
       } finally {
         setLoading(false);
       }

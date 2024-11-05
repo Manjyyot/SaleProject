@@ -29,7 +29,7 @@ function LeadForm() {
       alert('Lead profile added successfully!');
       navigate(`/lead-profile/${response.data._id}`);
     } catch (error) {
-      alert('Error adding lead profile');
+      console.log('Error adding lead profile');
       console.error('Error:', error);
     }
   };

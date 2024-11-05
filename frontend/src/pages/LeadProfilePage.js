@@ -22,7 +22,7 @@ function LeadProfilePage() {
           setOutcome(outcomeResponse);
         }
       } catch (error) {
-        alert('Error fetching data');
+        console.log('Error fetching data');
       } finally {
         setLoading(false);
       }
