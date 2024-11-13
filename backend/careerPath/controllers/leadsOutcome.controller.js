@@ -50,6 +50,14 @@ const processLeadOutcome = async (req, res) => {
     }
 };
 
+const getTotalLeadOutcomes = async (req, res) => {
+    try {
+        const count = await LeadOutcomeModel.countDocuments({});
+        res.status(200).json({ data: count });
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching total lead outcomes', error });
+    }
+};
 
 const getLeadOutcomeById = async (req, res) => {
     try {
@@ -122,5 +130,6 @@ module.exports = {
     getLeadOutcomeById,
     getLeadOutcomeByEmailOrPhone,
     updateLeadOutcomeById,
-    deleteLeadOutcomeById
+    deleteLeadOutcomeById,
+    getTotalLeadOutcomes
 };

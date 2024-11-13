@@ -1,12 +1,25 @@
-import React, { useState } from 'react';
-import { Container, Typography, List, ListItem, ListItemText, Button } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Container, Typography, List, ListItem, ListItemText, Button, Card, CardContent } from '@mui/material';
 import SearchBar from '../components/SearchBar';
-import { getLeadProfileByEmailOrPhone } from '../api/api';
+import { getLeadProfileByEmailOrPhone, getTotalLeadOutcomes } from '../api/api';
 import { useNavigate } from 'react-router-dom';
 
 function DashboardPage() {
   const [results, setResults] = useState([]);
+  const [count, setCount] = useState(0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await getTotalLeadOutcomes();
+        setCount(res.data);
+      } catch (error) {
+        alert('Error fetching total lead outcomes');
+      }
+    }
+    fetchData();
+  }, []);
 
   const handleSearch = async (query) => {
     try {
@@ -19,9 +32,8 @@ function DashboardPage() {
 
   return (
     <Container maxWidth="lg">
-      <Typography variant="h4" component="h1" gutterBottom>
-        
-      </Typography>
+      {/* <Typography variant="h4" component="h1" gutterBottom>
+      </Typography> */}
       <SearchBar onSearch={handleSearch} />
       <List>
         {results.map((result, index) => (
@@ -33,9 +45,18 @@ function DashboardPage() {
           </ListItem>
         ))}
       </List>
-      {/* <Button variant="contained" color="secondary" onClick={() => navigate('/add-lead')} style={{ marginTop: '20px' }}>
-        Add Lead Profile
-      </Button> */}
+      <br />
+      <br />
+      <Card style={{ maxWidth: 300, margin: '0 auto', marginTop: '20px', textAlign: 'center' }}>
+        <CardContent>
+          <Typography variant="h5" component="div">
+            Total Suggested Leads
+          </Typography>
+          <Typography variant="h4" color="textSecondary">
+            {count}
+          </Typography>
+        </CardContent>
+      </Card>
     </Container>
   );
 }

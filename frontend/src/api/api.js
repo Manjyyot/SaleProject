@@ -29,6 +29,16 @@ export const getLeadProfileById = async (id) => {
   }
 };
 
+export const getTotalLeadOutcomes = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/outcomes/total`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching lead profile:', error);
+    throw error;
+  }
+}
+
 // Function to process lead outcome
 export const processLeadOutcome = async (query) => {
   try {
