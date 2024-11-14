@@ -50,7 +50,7 @@ function DashboardPage() {
       <Card style={{ maxWidth: 300, margin: '0 auto', marginTop: '20px', textAlign: 'center' }}>
         <CardContent>
           <Typography variant="h5" component="div">
-            Total Suggested Leads
+            Suggested Leads
           </Typography>
           <Typography variant="h4" color="textSecondary">
             {count}
