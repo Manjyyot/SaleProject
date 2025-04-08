@@ -1,18 +1,18 @@
 version: '3.8'
 services:
   careerpath:
-    build: 
+    build:
       context: ./backend/careerPath
       dockerfile: Dockerfile
     ports:
       - "3003:3003"
+    env_file:
+      - ./backend/careerPath/.env
   frontend:
-    build: 
+    build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-      # - "3000:80"
     depends_on:
       - careerpath
-
