@@ -1,18 +1,47 @@
 version: '3.8'
+
 services:
   careerpath:
     build:
       context: ./backend/careerPath
-      dockerfile: Dockerfile
+    container_name: saleproject_careerpath
     ports:
       - "3003:3003"
-    env_file:
-      - ./backend/careerPath/.env
+    environment:
+      - MONGO_URI=mongodb+srv://newuser16:TaTNQipC9ZXLEj6b@travelbackend.qyczv.mongodb.net/?retryWrites=true&w=majority&appName=Travelbackend
+      - OPENAI_API_KEY=your-openai-api-key
+    networks:
+      - saleproject_network
+
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
+    container_name: saleproject_frontend
     ports:
       - "3000:3000"
-    depends_on:
-      - careerpath
+    networks:
+      - saleproject_network
+
+  mongodb_exporter:
+    image: bitnami/mongodb-exporter:latest  # Use Bitnami's official MongoDB exporter image
+    environment:
+      MONGODB_URI: "mongodb+srv://newuser16:TaTNQipC9ZXLEj6b@travelbackend.qyczv.mongodb.net/?retryWrites=true&w=majority&appName=Travelbackend"  # Your MongoDB URI
+    ports:
+      - "9216:9216"
+    networks:
+      - saleproject_network
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus:/etc/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - saleproject_network
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+
+networks:
+  saleproject_network:
+    driver: bridge
