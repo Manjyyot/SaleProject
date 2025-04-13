@@ -7,9 +7,8 @@ services:
     container_name: saleproject_careerpath
     ports:
       - "3003:3003"
-    environment:
-      - MONGO_URI=mongodb+srv://newuser16:TaTNQipC9ZXLEj6b@travelbackend.qyczv.mongodb.net/?retryWrites=true&w=majority&appName=Travelbackend
-      - OPENAI_API_KEY=your-openai-api-key
+    env_file:
+      - ./backend/careerPath/.env
     networks:
       - saleproject_network
 
@@ -23,9 +22,9 @@ services:
       - saleproject_network
 
   mongodb_exporter:
-    image: bitnami/mongodb-exporter:latest  # Use Bitnami's official MongoDB exporter image
+    image: bitnami/mongodb-exporter:latest
     environment:
-      MONGODB_URI: "mongodb+srv://newuser16:TaTNQipC9ZXLEj6b@travelbackend.qyczv.mongodb.net/?retryWrites=true&w=majority&appName=Travelbackend"  # Your MongoDB URI
+      MONGODB_URI: "mongodb+srv://newuser16:TaTNQipC9ZXLEj6b@travelbackend.qyczv.mongodb.net/?retryWrites=true&w=majority&appName=Travelbackend"
     ports:
       - "9216:9216"
     networks:

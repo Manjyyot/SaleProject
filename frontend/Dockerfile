@@ -1,12 +1,19 @@
-FROM node:22 as build
+FROM node:22-slim AS build
+
 WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci
+
 COPY . .
-RUN npm install
-RUN npm install --save-dev webpack webpack-cli webpack-dev-server style-loader css-loader
-RUN npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader
-# RUN npm run build
+
+RUN npm install --save-dev \
+    webpack webpack-cli webpack-dev-server \
+    style-loader css-loader \
+    @babel/core @babel/preset-env @babel/preset-react babel-loader
+
 EXPOSE 3000
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]
 
 # FROM nginx:stable-alpine as prod
 # COPY --from=build /app/build /usr/share/nginx/html
